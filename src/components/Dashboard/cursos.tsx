@@ -13,7 +13,7 @@ function cursos() {
         h="820px"
         align="center"
         justify="center"
-        bg="#E5E5E5"
+        bg="gray.50"
         flexDir="column"
         borderRadius="10px 0 0 10px"
       >
@@ -28,7 +28,7 @@ function cursos() {
           fontFamily="Poppins"
           fontWeight="600"
           fontSize="18"
-          color="#29292E"
+          color="gray.350"
           margin="0 0 12px"
           paddingBottom="8px"
         >
@@ -38,7 +38,7 @@ Nenhum curso por aqui...        </Heading>
           fontFamily="Roboto"
           fontWeight="400"
           fontSize="14"
-          color=" #737380"
+          color=" gray.300"
           margin="0 0 12px"
           opacity="70%"
           textAlign="center"

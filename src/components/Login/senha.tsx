@@ -1,45 +1,17 @@
-import React, { Dispatch, SetStateAction } from 'react'
-import { Flex, Input, Button, Image, Heading, Alert, AlertIcon, AlertTitle, AlertDescription, CloseButton, Icon} from '@chakra-ui/react'
-import { ArrowForwardIcon } from '@chakra-ui/icons'
-
-
+import React, {useState} from 'react'
+import { Flex, Input, Button, Heading, Avatar} from '@chakra-ui/react'
+import { ArrowRightIcon } from '@chakra-ui/icons'
 interface Props{
-  next(): void;
-  onChange: Dispatch<SetStateAction<string>>;
+  onChange(password: any): void;
+  profileUri: string;
+  userName: string;
+  autentication(): void;
 }
-
-<Alert status='error'>
-  <AlertIcon />
-  <AlertTitle mr={2}>Ops :(</AlertTitle>
-  <AlertDescription>Aconteceu algo de errado!</AlertDescription>
-  <CloseButton position='absolute' right='8px' top='8px' />
-</Alert>
-
 function Senha(props: Props) {
+  const [password, setPassword] = useState('');
 
-
-  <Alert status='error'>
-  <AlertIcon />
-  <AlertTitle mr={2}>Ops :(</AlertTitle>
-  <AlertDescription>Aconteceu algo de errado!</AlertDescription>
-  <CloseButton position='absolute' right='8px' top='8px' />
-</Alert>
-
-  // const requestInfo ={
-  //   method: 'POST',
-  //   body: JSON.stringify({}),
-  //   headers: new Headers({
-  //     'Content-Type': 'application/json'
-  //   })
-  // }
-  // fetch('https://acv-ms-people-management.azurewebsites.net/Authentication/Authenticate', requestInfo)
-  // .then(response =>{
-  //   if(response.ok) {
-  //     return response.json()
-  //   }
-  //   throw new Error("Senha inválida...");
-  // })
-
+const {profileUri , userName, autentication} = props
+console.log('prof teste', profileUri)
   return (
     <Flex  justify="center">
       <Flex
@@ -49,31 +21,30 @@ function Senha(props: Props) {
         h="820px"
         align="center"
         justify="center"
-        bg="#F8F8F8"
+        bg="gray.100"
         flexDir="column"
         borderRadius="0px 10px 10px 0px"
       >
-        <Image
-          w="130px"
-          marginBottom="8px"
-          src="../assets/avatar.png"
-          alt="Icone IBCIDEAL"
-        />
+      <Avatar 
+        size='2xl' 
+        name={userName} 
+        src={profileUri} 
+        marginBottom="8px"
+      />
         <Heading
-          fontFamily="Inter"
-          fontWeight="500"
-          fontSize="26"
-          marginBottom="8px"
-          color="#232D42"
+            fontWeight="500"
+            fontFamily="Inter"
+            fontSize="26"
+            marginBottom="8px"
+            color="blue.300"
         >
-              Olá! Wherlesson Rocha
-        </Heading>
-
+           Olá! {userName}
+      </Heading>
         <Heading
           fontFamily="Inter"
           fontWeight="400"
           fontSize="16"
-          color="#8A92A6"          
+          color="gray.250"          
           marginBottom="11px"
         >
           Entre com sua senha para acessar sua conta.
@@ -87,21 +58,23 @@ function Senha(props: Props) {
           r="8px"
           border="solid 1px black"
           focusBorderColor="red"
-          bgColor="white"
-          color="gray.100"
+          bgColor="white.50"
+          color="gray.200"
           placeholder="Senha"
           variant="outline"
           _hover={{
             bgColor: 'gray.150'
           }}
-        />
+          onChange={(e)=>setPassword(e.target.value)}
+       />
         <Button
+          iconBase={ArrowRightIcon}
           type="submit"
           colorScheme="yellow"
-          color="white"
+          color="white.50"
           w="320px"
           h="50px"
-          onClick={()=>{props.next()}}
+          onClick={(e)=>{e.preventDefault(); autentication()}}
         >
           Próximo
         </Button>

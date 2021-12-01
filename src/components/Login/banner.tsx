@@ -18,24 +18,23 @@ function Banner() {
           w="301px"
           src="../assets/img_login.png"
           alt="Icone Login"
+          marginBottom="8px"
         />
         <Heading
-          marginLeft="76.59px"
           fontFamily="Poppins"
           fontWeight="700"
           fontSize="36"
-          color="white"
-          margin="0 0 12px"
+          color="white.50"
+          marginBottom="20px"
         >
           Adquira mais conhecimento.
         </Heading>
         <Heading
-          marginLeft="76.59px"
+
           fontFamily="Roboto"
           fontWeight="200"
           fontSize="24"
-          color="#F8F8F8"
-          margin="0 0 12px"
+          color="gray.100"
           opacity="70%"
         >
           A sabedoria preserva a vida <br />

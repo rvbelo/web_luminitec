@@ -1,35 +1,18 @@
-import React, { Dispatch, SetStateAction } from 'react'
-import { Flex, Input, Button, Image, Heading, Alert, AlertIcon, AlertTitle, AlertDescription, CloseButton } from '@chakra-ui/react'
+import React from 'react'
+import { Flex, Input, Button, Image, Heading } from '@chakra-ui/react'
+import { ArrowRightIcon } from '@chakra-ui/icons'
 
 interface Props{
+  onChange(email: string): void;
   next(): void;
-  onChange: Dispatch<SetStateAction<string>>;
+  // onError?(arg: any): void;
+  // onSuccess(arg: any): void;
 }
 
 function Email(props: Props) {
 
-  <Alert status='error'>
-  <AlertIcon />
-  <AlertTitle mr={2}>Ops :(</AlertTitle>
-  <AlertDescription>Aconteceu algo de errado!</AlertDescription>
-  <CloseButton position='absolute' right='8px' top='8px' />
-</Alert>
-
-  const requestInfo ={
-    method: 'GET',
-    body: JSON.stringify({}),
-    headers: new Headers({
-      'Content-Type': 'application/json'
-    })
-  }
-  fetch('https://acv-ms-people-management.azurewebsites.net/Authentication/SearchUser/%7Bemail%7D', requestInfo)
-  .then(response =>{
-    if(response.ok) {
-      return response.json()
-    }
-    throw new Error("Email inválido...");
-  })
-
+  const {onChange, next} = props
+   
   return (
     <Flex  justify="center">
       <Flex
@@ -39,22 +22,22 @@ function Email(props: Props) {
         h="820px"
         align="center"
         justify="center"
-        bg="#F8F8F8"
+        bg="gray.100"
         flexDir="column"
         borderRadius="0px 10px 10px 0px"
       >
         <Image
           w="130px"
-          paddingBottom="42px"
           src="../assets/icon_black.png"
           alt="Icone IBCIDEAL"
+          marginBottom="42px"
         />
         <Heading
           fontFamily="Inter"
           fontWeight="400"
           fontSize="16"
-          color="#8A92A6"
-          margin="0 0 12px"
+          color="gray.250"
+          marginBottom="8px"
         >
           Entre com sua senha para acessar sua conta.
         </Heading>
@@ -64,25 +47,26 @@ function Email(props: Props) {
           w="320px"
           h="50px"
           r="8px"
-          p="13px 12px 13px 16px"
+          marginBottom="12px"
           border="solid 1px black"
           focusBorderColor="red"
-          bgColor="white"
-          color="gray.100"
+          bgColor="white.50"
+          color="gray.200"
           placeholder="Email"
           variant="outline"
           _hover={{
             bgColor: 'gray.150'
           }}
+          onChange={(e)=>onChange(e.target.value)} 
         />
         <Button
+          iconBase={ArrowRightIcon}
           type="submit"
-          mt="6"
           colorScheme="yellow"
-          color="white"
+          color="white.50"
           w="320px"
           h="50px"
-          onClick={props.next}
+          onClick={(e)=>{e.preventDefault(); next()}}
         >
           Próximo
         </Button>
